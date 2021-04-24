@@ -1,0 +1,144 @@
+
+html, body {
+    height: 100%;
+    width : 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+ }
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(63, 63, 63);
+}
+.test {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 50vw;
+    min-width: 30%;
+    min-height: 60%;
+    max-height: 80%;
+    max-width: 40%;
+    animation: backgroundColorTest 1s forwards;
+}
+
+@keyframes backgroundColorTest {
+    from {
+        background-color: rgba(19, 19, 27, 0);
+    }
+    to {
+        background-color: rgb(19, 19, 27);
+    }
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+
+.column{
+    height: 100%;
+    width: 100%;
+    /*background-color: red;*/
+    /* animation-name: slidein;
+    animation-duration: 3s; */
+    animation: borderColumn 3s forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes borderColumn {
+    0% {
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
+
+    20% {
+        border: 1px solid rgba(255, 255, 255, 0);
+    }
+    100% {
+        border: 1px solid rgb(255, 255, 255);
+    }
+}
+
+.token {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+.availablePlays1 {
+    animation: avbP1 5s forwards;
+    animation-iteration-count: 1;
+}
+
+.availablePlays2 {
+    animation: avbP2 5s forwards;
+    animation-iteration-count: 1;
+}
+
+.blanc {
+    animation: avbBlanc 4s forwards;
+    animation-iteration-count: 1;
+}
+
+.noir {
+    animation: avbNoir 4s forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes avbP1 {
+    20% {
+        background-color: rgba(10, 162, 173, 0);
+    }
+    100% {
+        background-color: rgba(10, 162, 173, 0.251);
+    }
+}
+
+@keyframes avbP2 {
+    20% {
+        background-color: rgba(252, 154, 26, 0);
+    }
+    100% {
+        background-color: rgba(252, 154, 26, 0.253);
+    }
+}
+
+@keyframes avbBlanc {
+    20% {
+        background-color: rgba(55, 212, 223, 0);
+    }
+    100% {
+        background-color: rgba(55, 211, 223, 0.993);
+    }
+}
+
+@keyframes avbNoir {
+    20% {
+        background-color: rgba(211, 123, 8, 0);
+    }
+    100% {
+        background-color: rgb(211, 123, 8);
+    }
+}
+
+.eblanc {
+    background-color: rgba(55, 211, 223, 0.993);
+}
+
+.scoreJoueur1 {
+    font-size: large;
+    color: white;
+}
+
+.scoreJoueur2 {
+    font-size: large;
+    color: white;
+}
