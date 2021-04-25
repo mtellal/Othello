@@ -34,32 +34,15 @@ html, body {
       
     background: linear-gradient(124deg,#e81d1d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3);
     background-size: 1800% 1800%; 
-    -webkit-animation: rainbow 18s ease infinite;
-    -z-animation: rainbow 18s ease infinite;
-    -o-animation: rainbow 18s ease infinite;
     animation: rainbow 18s ease infinite;
  }
 
- @-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
 @keyframes rainbow { 
     0%{background-position:0% 82%}
     50%{background-position:100% 19%}
     100%{background-position:0% 82%}
 }
+
  .container {
     display: flex;
     flex-direction: row;
@@ -188,12 +171,22 @@ html, body {
     background-color: rgba(55, 211, 223, 0.993);
 }
 
-.scoreJoueur1 {
-    font-size: large;
+.infos{
+    width: 40%;
+}
+
+.pj1, .pj2, .tour-container {
+    display: flex;
+    flex-direction: row;
+}
+.pointj1, .pointj2, .text-tour {
+    font-family: 'Antonio', sans-serif;
+    font-size: xx-large;
     color: white;
 }
 
-.scoreJoueur2 {
-    font-size: large;
+.scoreJoueur1, .scoreJoueur2, .tour {
+    font-family: 'Antonio', sans-serif;
+    font-size: xx-large;
     color: white;
 }
