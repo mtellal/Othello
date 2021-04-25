@@ -2,17 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/css.css" >
         <script src="../js/app.js" async></script>
-        
     </head>
     <body>
-            <div >
-                <p class="scoreJoueur1"></p>
-                <p class="scoreJoueur2"></p>
-            </div>
+        <div class="header">
+            <h1 class="titre">Othello</h1>
+            <span class="neon"></span>
+        </div>
+           
 
-            <div class="test">
+            <div class="container"> 
+                <div >
+                <div style="display: flex; flex-direction: row;width: 100px;justify-content: space-between;">
+                    <p style="color: white; font-size: large;">Points J1:</p>
+                    <p class="scoreJoueur1"></p>
+                </div>
+                <div style="display: flex; flex-direction: row;width: 100px;justify-content: space-between;">
+                    <p style="color: white; font-size: large;" >Points J2: </p>
+                    <p class="scoreJoueur2"></p>
+                </div>
+                <div style="display: flex; flex-direction: row;width: 100px;justify-content: space-between;">
+                    <p style="color: white; font-size: large;" >Nb tour: </p>
+                    <p class="tour" style="color: white; font-size: large;" ></p>
+                </div>
             </div>
+                <div class="test">
+                </div>
+            </div>
+            
     </body>
 </html>

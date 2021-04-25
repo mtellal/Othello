@@ -9,8 +9,9 @@ let test = document.querySelector('.test');
 let player1 = 0;
 let player2 = 1;
 let tour = 0;
+let combienDeTour = 0;
 let tab;
-
+let haveAlreadyEvent = [];
 
 grid(8,8);
 
@@ -31,6 +32,7 @@ let scoreJoueur2 = document.getElementsByClassName('noir').length;
  
 document.querySelector('.scoreJoueur1').textContent = scoreJoueur1;
 document.querySelector('.scoreJoueur2').textContent = scoreJoueur2;
+document.querySelector('.tour').textContent = combienDeTour;
 
 // créer une grille de row*column, ajoute les classes/id:
 // x * row => y * column => y * token
@@ -214,7 +216,7 @@ function availablePlays(player1, player2){
 
 // modifier tab, suivant un tab t: avec les indices i,j à jouer, et suivant un joueur
 function playToken(t, player1, player2){
-
+    combienDeTour++;
     tab[t[0]][t[1]] = player1;
     updateTab(t, player1, player2);
     resetAvailablePlays();
@@ -223,15 +225,17 @@ function playToken(t, player1, player2){
     displayPlays(playsPlayer1,playsPlayer2);
     displayTab();
     updateTabScores();
-    availablePlaysEventPlayer1 = document.querySelectorAll('.availablePlays1');
-    availablePlaysEventPlayer2 = document.querySelectorAll('.availablePlays2');
     tour++;
-
-    animation();
-
-    setTimeout(() => {
+    console.log(tour+' t1');
+  
+         setTimeout(() => {
         if (playsPlayer2.length !== 0){
+            console.log("/////////////////")
+            console.log(tab);
+            console.log(playsPlayer2);
+
                 let oui = randomIA();
+                console.log(oui+' JOUÉE')
                 tab[oui[0]][oui[1]] = player2;
                 updateTab(oui, player2, player1);
                 resetAvailablePlays();
@@ -240,13 +244,15 @@ function playToken(t, player1, player2){
                 displayPlays(playsPlayer1,playsPlayer2);
                 displayTab();
                 updateTabScores();
-                availablePlaysEventPlayer1 = document.querySelectorAll('.availablePlays1');
-                availablePlaysEventPlayer2 = document.querySelectorAll('.availablePlays2');
                 tour--;
                 animation();
-        }else tour--;
+                console.log(tour+' t2')
+        }
             
     }, 4000)
+    
+    animation();
+   
     
 }
 
@@ -256,6 +262,13 @@ function resetAvailablePlays(){
         e.classList.remove('availablePlays2');
         e.style.backgroundColor = '';
     })
+    availablePlaysEventPlayer1.forEach(e => {
+        console.log('reset')
+        e.removeEventListener('click', function(){eventClick(e)});
+        e.removeEventListener('mouseenter', function(){eventMouseEnter(e)});
+        e.removeEventListener('mouseleave', function(){eventMouseLeave(e)});
+    })
+
 } 
 
 function changeLine(i,j,d, player){
@@ -408,6 +421,7 @@ function updateTabScores(){
     scoreJoueur2 = document.getElementsByClassName('noir').length;
     document.querySelector('.scoreJoueur1').textContent = scoreJoueur1;
     document.querySelector('.scoreJoueur2').textContent = scoreJoueur2;
+    document.querySelector('.tour').textContent = combienDeTour;
 }
 
 
@@ -416,33 +430,42 @@ let availablePlaysEventPlayer2 = document.querySelectorAll('.availablePlays2');
 
 animation();
 
+
+var eventClick =function(e) {
+    console.log("clicked//////////////////////")
+        let regexp = e.id.match(/[0-9]/g);
+        playToken(regexp, player1, player2);
+}
+
+function eventMouseEnter(e){
+        let available = e.classList.contains('availablePlays1');
+        let contain = e.classList.contains('blanc');
+        if (!contain && available)
+            e.classList.replace('availablePlays1', 'eblanc');
+}
+
+function eventMouseLeave(e){
+        let available = e.classList.contains('eblanc');
+        let contain = e.classList.contains('blanc');
+        if (!contain && available)
+            e.classList.replace('eblanc', 'availablePlays1');
+}
+
+
 function animation(){
 
- if (tour % 2 === 0){
-        availablePlaysEventPlayer1.forEach(function(e){
-           
-                console.log('dedans')
-                e.addEventListener('click', function(){
-                    let regexp = e.id.match(/[0-9]/g);
-                    playToken(regexp, player1, player2);
-            })
-            
+    availablePlaysEventPlayer1 = document.querySelectorAll('.availablePlays1');
+    availablePlaysEventPlayer2 = document.querySelectorAll('.availablePlays2');
 
-                e.addEventListener('mouseenter', function(){
-                    let available = e.classList.contains('availablePlays1');
-                    let contain = e.classList.contains('blanc');
-                    if (!contain && available)
-                        e.classList.replace('availablePlays1', 'eblanc');
-                })
-            
-                e.addEventListener('mouseleave', function(){
-                    let available = e.classList.contains('eblanc');
-                    let contain = e.classList.contains('blanc');
-                    if (!contain && available)
-                        e.classList.replace('eblanc', 'availablePlays1');
-                })
+        availablePlaysEventPlayer1.forEach(e => {
+            if (!haveAlreadyEvent.includes(e)){
+                haveAlreadyEvent.push(e);
+                e.addEventListener('click', function(){eventClick(e), this.removeEventListener('click', arguments.callee);});
+            }
+            e.addEventListener('mouseenter', function(){eventMouseEnter(e)});
+            e.addEventListener('mouseleave', function(){eventMouseLeave(e)});
         })
-    }
+    
 }
 
 }
