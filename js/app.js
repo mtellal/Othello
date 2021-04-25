@@ -1,5 +1,32 @@
 
-(jeu());
+
+
+let buttonRules = document.querySelector('.button-rules');
+console.log(buttonRules)
+let text = "Le but du jeu est d'avoir le plus de pions de sa couleur que \
+l’adversaire à la fin de la partie. Celle-ci \
+s’achève lorsque aucun des deux joueurs ne \
+peut plus jouer de coup légal. Cela intervient généralement lorsque les 64 cases \
+sont occupées. A son tour de jeu, le joueur doit poser un pion de sa couleur sur une \
+case vide de l’othellier, adjacente à un pion adverse. Il doit également, en posant son \
+pion, encadrer un ou plusieurs pions adverses entre le pion qu’il pose et un pion à sa couleur, \
+déjà placé sur l’othellier. Cette prise en sandwich peut se faire aussi bien horizontalement ou \
+verticalement, qu’en diagnonale. Le joueur retourne le ou les pions qu’il vient d’encadrer, qui \
+devient ainsi de sa couleur. Les pions ne sont ni retirés de l’othellier, ni déplacés d’une case à l’autre."
+
+buttonRules.onclick = () => {
+    if (text == ''){
+        document.querySelector('.container-regles').remove();
+        jeu();
+    }
+        
+    else {
+        document.querySelector('.text-rules').textContent = text;
+    text = '';
+    console.log(document.querySelector('.text-rules'));
+    }    
+    
+}
 
 
 function jeu(){

@@ -10,6 +10,63 @@ html, body {
     background-color: rgb(63, 63, 63);
  }
 
+
+ .container-regles {
+     display: flex;
+     justify-content: center;
+     position: absolute;
+     align-items: center;
+     width: 100vw;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.5);
+ }
+
+ .regles {
+     border-radius: 1%;
+     border: 1px solid white;
+     width: 50%;
+     height: 70%;
+     background-color: rgb(0, 0, 0);
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+ .text-rules {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 90%;
+     height: 75%;
+     color: white;
+     font-size: x-large;
+    text-align: center;
+    font-family: 'Antonio', sans-serif;
+    line-height: 200%;
+ }
+
+.button-rules {
+    font-family: 'Antonio', sans-serif;
+    font-size: large;
+    color: white;
+    border: 1px solid white;
+    background-color: black;
+    border-radius: 5%;
+    width: 20%;
+    height: 5%;
+}
+
+.button-rules:active {
+    background-color: rgba(255, 255, 255, 0.801);
+    color: black;
+    cursor: pointer;
+}
+
+.button-rules:hover{
+    cursor: pointer;
+}
+
  .header {
      height: 10%;
     display: flex;
@@ -31,16 +88,14 @@ html, body {
  .neon {
     height: 1px;
     width: 100%;
-      
     background: linear-gradient(124deg,#e81d1d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3);
     background-size: 1800% 1800%; 
-    animation: rainbow 18s ease infinite;
+    animation: rainbow 10s ease infinite;
  }
 
 @keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
+    0%{background-position:0% 100%}
+    100%{background-position:100% 0%}
 }
 
  .container {
